@@ -158,6 +158,7 @@ let inorder = (root) => {
 
 // Create first tree as shown in example
 let root1 = null;
+let head = root1;
 root1 = insert(root1, 5);
 root1 = insert(root1, 1);
 root1 = insert(root1, 10);
@@ -174,6 +175,25 @@ root2 = insert(root2, 20);
 root2 = insert(root2, 4);
 root2 = insert(root2, 9);
 
+let indent = 1;
+const traverse = (root) => {
+  root.forEach((node) => {
+    console.log('--' + Array(indent).join('--'), node.data);
+    if (node.left) {
+      indent++;
+      traverse(node.left);
+    }
+    if (node.right) {
+      indent++;
+      traverse(node.right);
+    }
+    if (root.indexOf(node) === root.length - 1) {
+      indent--;
+    }
+  });
+};
+
+console.log('Tree 1 : ' + traverse(head) + '\n');
 console.log('Tree 1 : ' + '\n');
 inorder(root1);
 console.log();
